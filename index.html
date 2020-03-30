@@ -65,14 +65,28 @@
 
       sliderImages.forEach(sliderImage => {
 
+        //half way through the image
         let slideInAt= (window.scrollY + window.innerHeight) - sliderImage.height / 2;
-        console.log(slideInAt)
+        // console.log(slideInAt)
+
+        //bottom of the image
+        let imageBottom = sliderImage.offsetTop + sliderImage.height;
+
+        let halfIsShown = slideInAt > sliderImage.offsetTop
+        let isNotScrolledPast = window.scrollY < imageBottom;
+
+        if(halfIsShown && isNotScrolledPast){
+          sliderImage.classList.add('active');
+        } else{
+          sliderImage.classList.remove('active')
+        }
+
 
       });
 
     }
 
-    window.addEventListener('scroll', debounce(checkSlide, 500));
+    window.addEventListener('scroll', debounce(checkSlide));
 
   </script>
 
