@@ -60,8 +60,15 @@
 
     let sliderImages = document.querySelectorAll('.slide-in');
 
+    // image appears after a % is shown in the page
     function checkSlide(e){
-      console.log(e)
+
+      sliderImages.forEach(sliderImage => {
+
+        let slideInAt= (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        console.log(slideInAt)
+
+      });
 
     }
 
